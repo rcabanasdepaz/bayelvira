@@ -1,0 +1,35 @@
+JAVAC=gcj
+FLAGS_JAVA= -c
+
+
+SOURCES = elvira/Bnet.class elvira/CaseList.class elvira/CaseListMem.class elvira/CaseListOutMem.class elvira/ConditionalIndependence.class elvira/Configuration.class elvira/Continuous.class elvira/ContinuousCaseListMem.class elvira/ContinuousConfiguration.class elvira/ContinuousIntervalConfiguration.class elvira/Evidence.class elvira/Finding.class elvira/FiniteStates.class elvira/Graph.class elvira/IDiagram.class elvira/InvalidEditException.class elvira/Link.class elvira/LinkList.class elvira/Network.class elvira/Node.class elvira/NodeQueue.class elvira/NodeQueueM.class elvira/NodePairTable.class elvira/PairTable.class elvira/PriorityQueue.class elvira/PriorityQueueM.class elvira/NodeList.class elvira/Relation.class elvira/RelationList.class elvira/SetVectorOperations.class elvira/CanonicalRelation.class elvira/MaxRelation.class elvira/MinRelation.class elvira/fusion/Fusion.class elvira/potential/ContinuousProbabilityTree.class elvira/potential/Function.class elvira/potential/FunctionAddNormIdf.class elvira/potential/FunctionIctNeo.class elvira/potential/FunctionNormIdf.class elvira/potential/FunctionSumNormIdf.class elvira/potential/ListPotential.class elvira/potential/MixtExpDensity.class elvira/potential/MultipleTree.class elvira/potential/Potential.class elvira/potential/PotentialContinuousPT.class elvira/potential/PotentialConvexSet.class elvira/potential/PotentialFunction.class elvira/potential/PotentialTable.class elvira/potential/PotentialMTree.class elvira/potential/PotentialTree.class elvira/potential/ProbabilityTree.class elvira/potential/PotentialVar.class elvira/database/DataBaseCases.class elvira/inference/Propagation.class elvira/inference/elimination/ArcReversal.class elvira/inference/elimination/VariableElimination.class elvira/inference/elimination/VEWithPotentialTree.class elvira/inference/clustering/Penniless.class elvira/inference/clustering/SimplePenniless.class elvira/inference/clustering/CliquePair.class elvira/inference/clustering/CliquePairList.class elvira/inference/clustering/HuginPropagation.class elvira/inference/clustering/JoinTree.class elvira/inference/clustering/LazyPenniless.class elvira/inference/clustering/SimpleLazyPenniless.class elvira/inference/clustering/NeighbourTreeList.class elvira/inference/clustering/NeighbourTree.class elvira/inference/clustering/NodeJoinTree.class elvira/inference/clustering/Triangulation.class elvira/inference/approximate/ContinuousMCMC.class elvira/inference/approximate/ImportanceSampling.class elvira/inference/approximate/ImportanceSamplingFunctionTree.class elvira/inference/approximate/ImportanceSamplingTable.class elvira/inference/approximate/ImportanceSamplingTree.class elvira/inference/approximate/ImportanceSamplingTreeAV.class elvira/inference/approximate/MarkovChainMonteCarlo.class elvira/inference/approximate/SimulationProp.class elvira/inference/approximate/SystematicSamplingTable.class elvira/inference/approximate/SystematicSamplingTree.class elvira/inference/abduction/AbductiveInference.class elvira/inference/abduction/AbductiveInferenceNilsson.class elvira/inference/abduction/AIPartitionElement.class elvira/inference/abduction/AIPartitionElementList.class elvira/inference/abduction/Explanation.class elvira/parser/ASCII_CharStream.class elvira/parser/BayesNetConstants.class elvira/parser/BayesNetParse.class elvira/parser/BayesNetParseConstants.class elvira/parser/BayesNetParseTokenManager.class elvira/parser/BayesNetTokenManager.class elvira/parser/DataBaseParse.class elvira/parser/DataBaseParseConstants.class elvira/parser/DataBaseParseTokenManager.class elvira/parser/EvidenceParse.class elvira/parser/EvidenceParseConstants.class elvira/parser/EvidenceParseTokenManager.class elvira/parser/ParseException.class elvira/parser/ResultParse.class elvira/parser/ResultParseConstants.class elvira/parser/ResultParseTokenManager.class elvira/parser/Token.class elvira/parser/TokenMgrError.class elvira/parser/VariableListParse.class elvira/parser/VariableListParseConstants.class elvira/parser/VariableListParseTokenManager.class elvira/tools/DSeparation.class elvira/tools/PropagationStatistics.class elvira/tools/JoinTreeStatistics.class elvira/tools/LinearFunction.class elvira/learning/BBenedict.class elvira/learning/BICLearning.class elvira/learning/BICMetrics.class elvira/learning/K2Learning.class elvira/learning/K2Metrics.class elvira/learning/KLMetrics.class elvira/learning/Learning.class elvira/learning/LogFactorial.class elvira/learning/Metrics.class elvira/learning/PCLearning.class
+
+FILESPARSER = elvira/parser/BayesNetParse$$JJCalls.class elvira/parser/DataBaseParse$$JJCalls.class elvira/parser/EvidenceParse$$JJCalls.class elvira/parser/VariableListParse$$JJCalls.class elvira/parser/ResultParse$$JJCalls.class
+
+FILESPARSEROBJ = $(FILESPARSER:class=o)
+
+.PHONY : all
+
+all : elvira/inference/elimination/VariableElimination
+
+elvira/inference/elimination/VariableElimination : $(SOURCES:class=o) $(FILESPARSER:class=o)
+	$(JAVAC) $(SOURCES:class=o) elvira/parser/BayesNetParse'$$'JJCalls.o elvira/parser/DataBaseParse'$$'JJCalls.o elvira/parser/EvidenceParse'$$'JJCalls.o elvira/parser/VariableListParse'$$'JJCalls.o elvira/parser/ResultParse'$$'JJCalls.o --main=elvira.inference.elimination.VariableElimination -o $@
+
+%.o : %.class
+	$(JAVAC) $(FLAGS_JAVA) $< -o $@
+
+elvira/parser/BayesNetParse$$JJCalls.o : elvira/parser/BayesNetParse$$JJCalls.class
+	$(JAVAC) $(FLAGS_JAVA) elvira/parser/BayesNetParse'$$'JJCalls.class -o elvira/parser/BayesNetParse'$$'JJCalls.o 
+
+elvira/parser/DataBaseParse$$JJCalls.o : elvira/parser/DataBaseParse$$JJCalls.class
+	$(JAVAC) $(FLAGS_JAVA) elvira/parser/DataBaseParse'$$'JJCalls.class -o elvira/parser/DataBaseParse'$$'JJCalls.o 
+
+elvira/parser/EvidenceParse$$JJCalls.o : elvira/parser/EvidenceParse$$JJCalls.class
+	$(JAVAC) $(FLAGS_JAVA) elvira/parser/EvidenceParse'$$'JJCalls.class -o elvira/parser/EvidenceParse'$$'JJCalls.o 
+
+elvira/parser/VariableListParse$$JJCalls.o : elvira/parser/VariableListParse$$JJCalls.class
+	$(JAVAC) $(FLAGS_JAVA) elvira/parser/VariableListParse'$$'JJCalls.class -o elvira/parser/VariableListParse'$$'JJCalls.o 
+
+elvira/parser/ResultParse$$JJCalls.o : elvira/parser/ResultParse$$JJCalls.class
+	$(JAVAC) $(FLAGS_JAVA) elvira/parser/ResultParse'$$'JJCalls.class -o elvira/parser/ResultParse'$$'JJCalls.o 
+	

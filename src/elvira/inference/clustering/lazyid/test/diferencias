@@ -1,0 +1,217 @@
+------------------------------ ./ConcreteFileFilter.java -----------------------
+---------------------------------------------------------
+------------------------------ ./TestFactory.java -----------------------
+---------------------------------------------------------
+------------------------------ ./VEIDEvaluator.java -----------------------
+50c50
+<        diagram.getInformation();
+---
+>        // diagram.getInformation();
+66,68d65
+<        // Set the initial potential size
+<        result.setInitialPotentialSize(diagram.calculateSizeOfPotentials());
+<        
+---------------------------------------------------------
+------------------------------ ./IDEvaluator.java -----------------------
+---------------------------------------------------------
+------------------------------ ./EnumAlgorithms.java -----------------------
+---------------------------------------------------------
+------------------------------ ./LazyWTACIDEvaluator.java -----------------------
+---------------------------------------------------------
+------------------------------ ./LazyWTIDEvaluator.java -----------------------
+---------------------------------------------------------
+------------------------------ ./TestLauncher.java -----------------------
+69a70
+> System.out.println("Se inicia la ejecucion del evaluador....");           
+70a72
+> System.out.println("Fin de ejecucion del evaluador..........");           
+112c114
+< System.out.println("Se ha creado el lanzador....");        
+---
+>        
+---------------------------------------------------------
+------------------------------ ./NetResult.java -----------------------
+---------------------------------------------------------
+------------------------------ ./GlobalResults.java -----------------------
+43c43
+<   public GlobalResults(EnumAlgorithms refAlg, EnumAlgorithms compAlg){
+---
+>   public GlobalResults(String basename, EnumAlgorithms refAlg, EnumAlgorithms compAlg){
+60c60
+<       files=dir.listFiles(new ConcreteFileFilter(".resLazy"));
+---
+>       files=dir.listFiles(new ConcreteFileFilter(basename,".resLazy"));
+101,102c101
+<     System.out.println("Chance  Decision   Value   Links    In.PS   Const   MaxPS   AvgPS   Time");
+<     System.out.println();
+---
+>     System.out.println("Chance  Decis   Value   Links    In.PS   Const   MaxPS   AvgPS   Time");
+142,145c141,142
+<         // Print the data
+<         System.out.print(chanceNodes+"  "+links+"  "+initialSize+"  ");
+<         System.out.println(maxSize+"  "+avgSize+"  "+time);
+<         System.out.println();
+---
+>         // Print the data with a certain format
+>         //System.out.printf("%8d %8d %10.2f %10.2f %10.2f %10.2f",chanceNodes,links,initialSize,maxSize,avgSize,time);
+235d231
+< 
+237,238c233
+<      String alg1=args[0];
+<      String alg2=args[1];
+---
+>      String baseName=null;
+240,241d234
+< 
+<      // Convert into the related numbers
+243,245c236,255
+<      for(int i=0; i < algorithms.length; i++){
+<        if (alg1.equals(algorithms[i].toString())){
+<          algorithm1=algorithms[i];
+---
+>      int i=0;
+> 
+>      // Check the number of arguments used
+>      if (args.length != 6){
+>         printUsage();
+>      }
+>      
+>      // Read the arguments
+>       while(i < args.length){
+>             if (args[i].equals("-name")){
+>                 baseName=args[i+1];
+>                 System.out.println("Basename: "+baseName);
+>                 i=i+2;
+>             }
+>             else{
+>                 if (args[i].equals("-alg1")){
+>                     for(int j=0; j < algorithms.length; j++){
+>                         if (algorithms[j].toString().equals(args[i+1])){
+>                             algorithm1=algorithms[j];
+>                             System.out.println("algoritmo1: "+algorithm1.name());
+249,251c259,266
+<      for(int i=0; i < algorithms.length; i++){
+<        if (alg2.equals(algorithms[i].toString())){
+<          algorithm2=algorithms[i];
+---
+>                     i=i+2;
+>                 }
+>                 else{
+>                    if (args[i].equals("-alg2")){
+>                       for(int j=0; j < algorithms.length; j++){
+>                          if (algorithms[j].toString().equals(args[i+1])){
+>                             algorithm2=algorithms[j];
+>                             System.out.println("algoritmo2: "+algorithm2.name());
+254a270,277
+>                       i=i+2;
+>                    }
+>                    else{
+>                       printUsage();
+>                    }
+>                 }
+>             }
+>         }
+257c280
+<      if (algorithm1 != null && algorithm2 != null){
+---
+>      if (baseName != null && algorithm1 != null && algorithm2 != null){
+259c282
+<        GlobalResults global=new GlobalResults(algorithm1, algorithm2);
+---
+>        GlobalResults global=new GlobalResults(baseName, algorithm1, algorithm2);
+264a288,306
+>   
+>     /**
+>      * Method for printing the usage information
+>      */
+>     private static void printUsage(){
+>         System.out.println("Usage: ");
+>         
+>         System.out.println("-name <base name for the ids to evaluate (no elv ext and no number>");
+>         
+>         System.out.println("-alg1 <id1> -alg2 <id2> ");
+>         System.out.println("Possible values for id1 and id2");
+>         EnumAlgorithms algorithms[]=EnumAlgorithms.values();
+>         for(int i=0; i < algorithms.length; i++){
+>             System.out.println("     "+algorithms[i].toString());
+>         }
+>         
+>         System.exit(0);
+>     }
+>     
+---------------------------------------------------------
+------------------------------ ./VEWTACIDEvaluator.java -----------------------
+50c50
+<        diagram.getInformation();
+---
+>        //diagram.getInformation();
+66,68d65
+<        // Set to 0 the number of constraints
+<        result.setConstrainedConfigurations(0);
+<        
+71,73d67
+< 
+<        // Set the initial potential size
+<        result.setInitialPotentialSize(evaluator.getCurrentRelations().sumSizes());
+---------------------------------------------------------
+------------------------------ ./ExperimentResult.java -----------------------
+90a91
+> System.out.println("ExperimentResult: setInitialData");
+95a97,102
+>       // Print the information
+>       System.out.println("Chance: "+chanceNodes+"  Decision: "+decisionNodes+
+>                          "  Value: "+valueNodes+"  Links: "+links+
+>                          "  Size: "+initialPotentialSize+
+>                          "  Constrained confs: "+constrainedConfigurations);
+> System.out.println("FIN ExperimentResult: setInitialData");      
+137,145c144,153
+<     System.out.print(chanceNodes+"   ");
+<     System.out.print(decisionNodes+"   ");
+<     System.out.print(valueNodes+"   ");
+<     System.out.print(links+"   ");
+<     System.out.print(initialPotentialSize);
+<     System.out.print(constrainedConfigurations+"   ");
+<     System.out.print(maxPotentialSize+"   ");
+<     System.out.print(avgPotentialSize+"   ");
+<     System.out.print(time);
+---
+>     System.out.printf("%5d %5d %5d %5d %10.2f %10.2f %10.2f %10.2f %10.2f",
+>             chanceNodes,
+>             decisionNodes,
+>             valueNodes,
+>             links,
+>             initialPotentialSize,
+>             constrainedConfigurations,
+>             maxPotentialSize,
+>             avgPotentialSize,
+>             time);
+---------------------------------------------------------
+------------------------------ ./VEWTIDEvaluator.java -----------------------
+49,51d48
+<        // Get information about the diagram
+<        diagram.getInformation();
+<        
+72,74d68
+<        // Set the initial potential size
+<        result.setInitialPotentialSize(evaluator.getCurrentRelations().sumSizes());
+<        
+---------------------------------------------------------
+------------------------------ ./LazyIDEvaluator.java -----------------------
+52c52
+<        diagram.getInformation();
+---
+>        // diagram.getInformation();
+61a62,63
+> System.out.println("LazyIDEvaluator ----- run: ");
+> 
+62a65
+> System.out.println("Se eliminan las relaciones de restricciones");
+63a67
+> System.out.println("Eliminadas las relaciones de restricciones");              
+69c73
+<                                            false,true);
+---
+>                                            true,true);
+---------------------------------------------------------
+------------------------------ ./ExperimentResultComparator.java -----------------------
+---------------------------------------------------------

@@ -1,0 +1,263 @@
+// Influence Diagram
+//   Elvira format 
+
+idiagram  "random_id_rand" { 
+
+// Network Properties
+
+kindofgraph = "directed";
+visualprecision = "0.00";
+version = 1.0;
+default node states = ("present" , "absent");
+
+// Variables 
+
+node X7(finite-states) {
+kind-of-node = chance;
+type-of-variable = finite-states;
+pos_x =1;
+pos_y =1;
+relevance = 7.0;
+purpose = "";
+num-states = 2;
+states = (x7_1 x7_2);
+}
+
+node X8(finite-states) {
+kind-of-node = chance;
+type-of-variable = finite-states;
+pos_y =4;
+relevance = 7.0;
+purpose = "";
+num-states = 2;
+states = (x8_1 x8_2);
+}
+
+node X9(finite-states) {
+kind-of-node = chance;
+type-of-variable = finite-states;
+pos_y =1;
+relevance = 7.0;
+purpose = "";
+num-states = 2;
+states = (x9_1 x9_2);
+}
+
+node D1(finite-states) {
+kind-of-node = decision;
+type-of-variable = finite-states;
+pos_x =2;
+pos_y =2;
+relevance = 7.0;
+purpose = "";
+num-states = 4;
+states = (d1_1 d1_2 d1_3 d1_4);
+}
+
+node X4(finite-states) {
+kind-of-node = chance;
+type-of-variable = finite-states;
+pos_x =3;
+pos_y =2;
+relevance = 7.0;
+purpose = "";
+num-states = 2;
+states = (x4_1 x4_2);
+}
+
+node X5(finite-states) {
+kind-of-node = chance;
+type-of-variable = finite-states;
+pos_x =3;
+pos_y =4;
+relevance = 7.0;
+purpose = "";
+num-states = 5;
+states = (x5_1 x5_2 x5_3 x5_4 x5_5);
+}
+
+node X6(finite-states) {
+kind-of-node = chance;
+type-of-variable = finite-states;
+pos_x =3;
+pos_y =1;
+relevance = 7.0;
+purpose = "";
+num-states = 3;
+states = (x6_1 x6_2 x6_3);
+}
+
+node D2(finite-states) {
+kind-of-node = decision;
+type-of-variable = finite-states;
+pos_x =5;
+pos_y =2;
+relevance = 7.0;
+purpose = "";
+num-states = 3;
+states = (d2_1 d2_2 d2_3);
+}
+
+node X1(finite-states) {
+kind-of-node = chance;
+type-of-variable = finite-states;
+pos_x =7;
+pos_y =2;
+relevance = 7.0;
+purpose = "";
+num-states = 5;
+states = (x1_1 x1_2 x1_3 x1_4 x1_5);
+}
+
+node X2(finite-states) {
+kind-of-node = chance;
+type-of-variable = finite-states;
+pos_x =6;
+relevance = 7.0;
+purpose = "";
+num-states = 3;
+states = (x2_1 x2_2 x2_3);
+}
+
+node X3(finite-states) {
+kind-of-node = chance;
+type-of-variable = finite-states;
+pos_x =6;
+pos_y =2;
+relevance = 7.0;
+purpose = "";
+num-states = 3;
+states = (x3_1 x3_2 x3_3);
+}
+
+node V0(continuous) {
+kind-of-node = utility;
+type-of-variable = continuous;
+pos_x =3;
+pos_y =5;
+relevance = 7.0;
+purpose = "";
+min = 0;
+max = 1;
+precision = 2;
+}
+
+// Links of the associated graph:
+
+link D1 D2;
+
+link D1 V0;
+
+link D1 X2;
+
+link D1 X3;
+
+link D1 X4;
+
+link D1 X6;
+
+link D2 V0;
+
+link D2 X2;
+
+link X1 X3;
+
+link X2 X1;
+
+link X4 D2;
+
+link X4 X6;
+
+link X5 D2;
+
+link X5 X4;
+
+link X6 D2;
+
+link X6 X1;
+
+link X7 D1;
+
+link X7 X5;
+
+link X8 D1;
+
+link X8 X7;
+
+link X9 D1;
+
+link X9 X7;
+
+//Network Relationships: 
+
+relation X7 X9 X8 { 
+comment = "new";
+kind-of-relation = potential;
+deterministic=false;
+values= table (0.0 0.4694112202339757 1.0 0.0 1.0 0.5305887797660243 0.0 1.0 );
+}
+
+relation X8 { 
+comment = "new";
+kind-of-relation = potential;
+deterministic=false;
+values= table (0.9946915984352862 0.0053084015647138294 );
+}
+
+relation X9 { 
+comment = "new";
+kind-of-relation = potential;
+deterministic=false;
+values= table (1.0 0.0 );
+}
+
+relation X4 X5 D1 { 
+comment = "new";
+kind-of-relation = potential;
+deterministic=false;
+values= table (0.7688749491914328 0.44861015964638895 0.0 0.7732394700176718 0.4388340279890889 0.8505308497237124 0.15581921212977407 0.0 1.0 0.0 1.0 0.8922677173633302 0.3861448399176286 0.7063591884719153 1.0 0.6630513396030654 0.0 0.41924586476598585 0.2080190652872026 1.0 0.23112505080856716 0.5513898403536112 1.0 0.22676052998232826 0.5611659720109112 0.14946915027628768 0.844180787870226 0.0 0.0 1.0 0.0 0.1077322826366698 0.6138551600823714 0.29364081152808463 0.0 0.3369486603969345 1.0 0.5807541352340142 0.7919809347127974 0.0 );
+}
+
+relation X5 X7 { 
+comment = "new";
+kind-of-relation = potential;
+deterministic=false;
+values= table (0.7519578245814607 0.05761320427526199 0.17244996962070203 0.0 0.008321977235600112 0.3572316046544138 0.06727022856223727 0.5565166210909969 0.0 0.02863856997932738 );
+}
+
+relation X6 X4 D1 { 
+comment = "new";
+kind-of-relation = potential;
+deterministic=false;
+values= table (0.9069742482772817 0.5030368827234891 0.062234375183309036 0.21410842048287582 0.4541111185216429 0.16686958619238204 0.7863027786601227 0.0 0.0824951904724485 0.4360559302591559 0.5938616914082987 0.19301192927116406 0.5458888814783571 0.0 0.20295590568468194 0.853046484444966 0.010530561250269714 0.06090718701735478 0.3439039334083921 0.5928796502459601 0.0 0.833130413807618 0.010741315655195323 0.14695351555503397 );
+}
+
+relation X1 X6 X2 { 
+comment = "new";
+kind-of-relation = potential;
+deterministic=false;
+values= table (0.0 0.0 0.04323400195625194 0.23873404286672192 0.11101371559546365 0.12287728252237744 0.12014480266198344 0.4511699860829848 0.0017053889932548188 0.0019312159481669042 0.9283850891953616 0.0 0.0 0.2548443579157152 0.0 0.0 0.07128506222344247 0.0065239282065037724 0.9196499688803175 0.03953887499201727 0.6318095107137528 0.16826578072543039 0.0 0.3233030182781798 0.006538934366014021 0.4559328096829814 0.0 3.849012420046212E-4 0.03207603581262107 0.0014175233668127765 0.58961019036195 0.13371707453385095 0.0 0.4655895414786205 0.021612142010591376 0.868570672633398 0.07803391392951106 0.0 0.32353896396318244 0.0033899860458977923 0.5004248519549702 0.5538196991994426 0.407726721493382 0.0 0.12320001016684337 );
+}
+
+relation X2 D2 D1 { 
+comment = "new";
+kind-of-relation = potential;
+deterministic=false;
+values= table (0.15334396100288977 0.0 0.2797893550895203 0.07914802865632976 0.9305630376081742 0.9441777211501475 0.40885243441471264 0.1881291824955565 0.19738787051902265 0.38614221272490307 1.0 0.8831296347141672 0.8466560389971103 0.43806229134160457 0.071865648550504 0.15625234875525462 0.0 0.0 0.005863259887351708 0.8118708175044435 0.579026974774037 0.613857787275097 0.0 0.11687036528583288 0.0 0.5619377086583955 0.6483449963599757 0.7645996225884155 0.06943696239182583 0.05582227884985252 0.5852843056979355 0.0 0.22358515470694046 0.0 0.0 0.0 );
+}
+
+relation X3 X1 D1 { 
+comment = "new";
+kind-of-relation = potential;
+deterministic=false;
+values= table (0.5811509528655031 0.0 0.0 0.9902246327724363 0.12617832368461204 0.0 0.7371364792131041 0.0 0.19044902882632392 0.14573801704904382 0.0 0.07768190930450626 1.0 0.29633903153717905 0.024631683990413537 0.7831890328124924 0.391415413220473 0.13374842171918752 0.0 0.39094345314191586 0.1461923631997257 0.1255556876874079 0.0 0.009303129709155904 0.4650000831268712 0.16303291364898856 0.21336554776937666 0.9977432665081286 0.6574985845106336 0.03577772983567869 0.5420813976406476 0.305041558434209 0.0 0.6238245563817706 0.0 0.0 0.5289175520184946 0.0 0.7027820833234957 0.42379764239889656 0.2726566839347712 0.8744443123125921 0.0 4.7223751840771235E-4 0.40882159318851674 0.8369670863510115 0.04949797301751931 0.0022567334918714376 0.1520523866630424 0.8184842531152774 0.45791860235935244 0.6172765322612848 0.0 0.07983641208105038 0.9753683160095864 0.21681096718750764 0.07966703476103247 0.8662515782808126 0.2972179166765044 0.18525890445918758 );
+}
+
+relation V0 D1 D2 { 
+comment = "new";
+kind-of-relation = utility;
+deterministic=false;
+values= table (48.90456541385241 0.0 0.0 98.98444360566982 108.2676027504784 79.98000166962973 53.62200815337371 62.90516729818229 34.61756621733362 133.88502507603744 143.16818422084603 114.88058313999736 );
+}
+
+}
