@@ -905,4 +905,38 @@ System.out.println("~~Removal of "+Y.getName());
         //  currentRelations.printDomainsAndSizes();
 
     }
+    
+    public static void main(String[] args) throws ParseException, IOException {
+    
+        
+        String netFile = "ids/spi/car_asim.elv";
+        IDiagram id = new IDiagram(netFile);
+                            
+ 
+        IDVEITparams p = new IDVEITparams();
+        double iutilPerturbation = 0.01;
+        double iprobPerturbation = 0.01;
+        p.setIutilPerturbation(iutilPerturbation);
+        p.setIprobPerturbation(iprobPerturbation);
+   
+
+        IDVEWithPotentialIntervalTable evaluator = new IDVEWithPotentialIntervalTable(id, p);
+ 
+        evaluator.generateDebugInfo = false;
+        
+        evaluator.setPolChoice(ChoiceFunction.IMAXIMALITY);
+        evaluator.setMakeReachableComb(true);
+        evaluator.setMakeReachableMarg(true);
+        evaluator.setEvalMethod(evalMethod.STANDARD);
+        evaluator.setMakeReachableBinComb(false);
+  
+        
+
+        evaluator.obtainInterest();
+   
+        evaluator.propagate();  
+        
+    }
+    
+    
 }
